@@ -1,0 +1,24 @@
+
+
+
+.section1 {
+ h2 {
+    color: #0e60ee;
+  } 
+  background-color: #00ff37; 
+  color: #000000;            
+  padding: 20px;            
+  border-radius: 10px;       
+  margin-bottom: 20px;       
+}
+
+.section2 {
+  h2 {
+    color: #ee0e60;
+  }
+  background-color: #ddff00; 
+  color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
