@@ -1,0 +1,36 @@
+package com.example.Spring.boot.project.controllers;
+
+import com.example.Spring.boot.project.models.Phrase;
+import com.example.Spring.boot.project.services.PhraseService;
+//import com.example.Spring.boot.project.repository.PhraseRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/phrases")
+public class PhraseController {
+    private final PhraseService phraseService;
+
+    public PhraseController(PhraseService phraseService) {
+        this.phraseService = phraseService;
+    }
+    @GetMapping("")
+    public ResponseEntity<List<Phrase>> getAllPhrases() {
+        List<Phrase> phrases = phraseService.getAllPhrases();
+        return new ResponseEntity <List<Phrase>>(phrases, HttpStatus.OK);
+        //return phraseRepository.getAllPhrase();
+    }
+
+    @PostMapping ("")
+    public ResponseEntity<Phrase> addPhrases(@RequestBody Phrase newPhrase) {
+       Phrase createdPhrase = phraseService.addPhrase(newPhrase);
+       return new ResponseEntity<Phrase>(createdPhrase, HttpStatus.CREATED);
+    }
+
+}
+
