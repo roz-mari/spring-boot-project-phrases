@@ -31,6 +31,16 @@ public class PhraseController {
        Phrase createdPhrase = phraseService.addPhrase(newPhrase);
        return new ResponseEntity<Phrase>(createdPhrase, HttpStatus.CREATED);
     }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Phrase> getPhraseById(@PathVariable Long id) {
+        return phraseService.getPhraseById(id)
+                .map(phrase -> new ResponseEntity<>(phrase, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Phrase> updatePhrase(@PathVariable Long id, @RequestBody Phrase phraseDetails) {
+        Phrase updatedPhrase = phraseService.updatePhrase(id, phraseDetails);
+        return new ResponseEntity<>(updatedPhrase, HttpStatus.OK);
+    }
 }
 
