@@ -28,8 +28,7 @@ public class PhraseService{
     }
     public Phrase updatePhrase(Long id, Phrase phraseDetails) {
         Phrase phrase = phraseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Frase not found"));
-
+                .orElseThrow(() -> new RuntimeException("Phrase not found"));
         phrase.setText(phraseDetails.getText());
         phrase.setAuthor(phraseDetails.getAuthor());
         return phraseRepository.save(phrase);
