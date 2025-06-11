@@ -34,4 +34,7 @@ public class PhraseService{
         phrase.setAuthor(phraseDetails.getAuthor());
         return phraseRepository.save(phrase);
     }
+    public void deletePhrase(Long id) {
+        phraseRepository.deleteById(id);
+    }
     }
