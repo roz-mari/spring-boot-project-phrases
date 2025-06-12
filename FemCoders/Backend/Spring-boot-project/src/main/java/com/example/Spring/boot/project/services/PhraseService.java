@@ -26,4 +26,14 @@ public class PhraseService{
     public Phrase addPhrase(Phrase phrase) {
             return phraseRepository.save(phrase);
     }
+    public Phrase updatePhrase(Long id, Phrase phraseDetails) {
+        Phrase phrase = phraseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Phrase not found"));
+        phrase.setText(phraseDetails.getText());
+        phrase.setAuthor(phraseDetails.getAuthor());
+        return phraseRepository.save(phrase);
+    }
+    public void deletePhrase(Long id) {
+        phraseRepository.deleteById(id);
+    }
     }
